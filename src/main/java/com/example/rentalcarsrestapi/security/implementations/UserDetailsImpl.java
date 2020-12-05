@@ -1,4 +1,4 @@
-package com.example.rentalcarsrestapi.security;
+package com.example.rentalcarsrestapi.security.implementations;
 
 import com.example.rentalcarsrestapi.model.User;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,11 +17,10 @@ public class UserDetailsImpl implements UserDetails {
     private Collection<GrantedAuthority> authorities;
 
     public UserDetailsImpl(User user) {
-        //  email as username
-        this.username = user.getEmail();
+        this.username = user.getUsername();
         this.id = user.getId();
         this.password = user.getPassword();
-        this.isEnabled = user.isEnabled();
+        this.isEnabled = true;
         authorities = user.getRoles().stream().map(roleType -> new SimpleGrantedAuthority(roleType.getRole().name())).collect(Collectors.toSet());
     }
 
@@ -42,7 +41,7 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
@@ -57,6 +56,6 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return isEnabled;
+        return true;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.rentalcarsrestapi;
+package com.example.rentalcarsrestapi.services;
 
 import com.example.rentalcarsrestapi.model.User;
 

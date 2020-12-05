@@ -1,6 +1,32 @@
 package com.example.rentalcarsrestapi.model;
 
-public enum Role {
-    ADMIN,
-    USER
+import org.hibernate.annotations.NaturalId;
+
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity
+public class Role {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Enumerated(EnumType.STRING)
+    @NaturalId
+    private RoleName name;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public RoleName getRole() {
+        return name;
+    }
+
+    public void setRole(RoleName name) {
+        this.name = name;
+    }
 }
