@@ -18,6 +18,11 @@ public class AuthenticationController {
         return "admin";
     }
 
+    @GetMapping("/user")
+    public String userInfo() {
+        return "User info only";
+    }
+
     @PostMapping("/authenticate")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) {
         return ResponseEntity.ok(authenticationService.createAuthenticationResponse(authenticationRequest));
