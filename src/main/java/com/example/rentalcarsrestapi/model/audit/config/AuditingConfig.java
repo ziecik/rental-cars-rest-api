@@ -23,7 +23,7 @@ public class AuditingConfig {
         public Optional<String> getCurrentAuditor() {
 
             String username = SecurityContextHolder.getContext().getAuthentication().getName();
-
+//
             if(username != null)
                 return Optional.of(username);
             else
