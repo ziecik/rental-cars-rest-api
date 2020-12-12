@@ -1,12 +1,13 @@
 package com.example.rentalcarsrestapi.model;
 
+import com.example.rentalcarsrestapi.model.audit.UserDateAudit;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class User {
+public class User extends UserDateAudit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
