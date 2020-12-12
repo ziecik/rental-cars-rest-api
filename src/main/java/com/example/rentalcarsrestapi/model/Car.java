@@ -2,10 +2,13 @@ package com.example.rentalcarsrestapi.model;
 
 import com.example.rentalcarsrestapi.model.audit.UserDateAudit;
 import com.sun.istack.NotNull;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 public class Car extends UserDateAudit {
 
     @Id
@@ -26,10 +29,16 @@ public class Car extends UserDateAudit {
     private Integer numberOfAirbags;
     @Enumerated
     private BodyType bodyType;
-    private FuelConsumption fuelConsumption;
+
     private Float acceleration100;
     private Integer power;
     private Float price;
+
+    private Date nextTechnicalTest;
+    private Date endOfInsurance;
+    @Enumerated
+    private CarStatus carStatus;
+
 
     public Long getId() {
         return id;
@@ -127,13 +136,6 @@ public class Car extends UserDateAudit {
         this.bodyType = bodyType;
     }
 
-    public FuelConsumption getFuelConsumption() {
-        return fuelConsumption;
-    }
-
-    public void setFuelConsumption(FuelConsumption fuelConsumption) {
-        this.fuelConsumption = fuelConsumption;
-    }
 
     public Float getAcceleration100() {
         return acceleration100;
@@ -159,33 +161,20 @@ public class Car extends UserDateAudit {
         this.price = price;
     }
 
-    private class FuelConsumption {
-        private Float lPer100kmCityDriving;
-        private Float lPer100kmRoadDriving;
-        private Float lPer100kmAverage;
-
-        public Float getlPer100kmCityDriving() {
-            return lPer100kmCityDriving;
-        }
-
-        public void setlPer100kmCityDriving(Float lPer100kmCityDriving) {
-            this.lPer100kmCityDriving = lPer100kmCityDriving;
-        }
-
-        public Float getlPer100kmRoadDriving() {
-            return lPer100kmRoadDriving;
-        }
-
-        public void setlPer100kmRoadDriving(Float lPer100kmRoadDriving) {
-            this.lPer100kmRoadDriving = lPer100kmRoadDriving;
-        }
-
-        public Float getlPer100kmAverage() {
-            return lPer100kmAverage;
-        }
-
-        public void setlPer100kmAverage(Float lPer100kmAverage) {
-            this.lPer100kmAverage = lPer100kmAverage;
-        }
+    public Date getNextTechnicalTest() {
+        return nextTechnicalTest;
     }
+
+    public void setNextTechnicalTest(Date nextTechnicalTest) {
+        this.nextTechnicalTest = nextTechnicalTest;
+    }
+
+    public Date getEndOfInsurance() {
+        return endOfInsurance;
+    }
+
+    public void setEndOfInsurance(Date endOfInsurance) {
+        this.endOfInsurance = endOfInsurance;
+    }
+
 }
