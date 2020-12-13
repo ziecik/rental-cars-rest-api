@@ -1,21 +1,17 @@
-package com.example.rentalcarsrestapi.model;
+package com.example.rentalcarsrestapi.dto;
 
-import com.example.rentalcarsrestapi.dto.AddCarRequest;
-import com.example.rentalcarsrestapi.model.audit.UserDateAudit;
-import com.sun.istack.NotNull;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import com.example.rentalcarsrestapi.model.BodyType;
+import com.example.rentalcarsrestapi.model.CarStatus;
+import com.example.rentalcarsrestapi.model.FuelType;
+import com.example.rentalcarsrestapi.model.GearBoxType;
+import org.springframework.stereotype.Component;
 
-import javax.persistence.*;
+import javax.persistence.Enumerated;
 import java.util.Date;
 
-@Entity
-@EntityListeners(AuditingEntityListener.class)
-public class Car extends UserDateAudit {
+@Component
+public class AddCarRequest {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
-    private Long id;
     private String brand;
     private String name;
     private String registrationNumber;
@@ -39,37 +35,6 @@ public class Car extends UserDateAudit {
     private Date endOfInsurance;
     @Enumerated
     private CarStatus carStatus;
-
-    public Car() {
-    }
-
-    public Car(AddCarRequest addCarRequest) {
-        this.brand = addCarRequest.getBrand();
-        this.name = addCarRequest.getName();
-        this.registrationNumber = addCarRequest.getRegistrationNumber();
-        this.fuelType = addCarRequest.getFuelType();
-        this.engineSize = addCarRequest.getEngineSize();
-        this.gearBoxType = addCarRequest.getGearBoxType();
-        this.numberOfGears = addCarRequest.getNumberOfGears();
-        this.numberOfSeats = addCarRequest.getNumberOfSeats();
-        this.numberOfDoors = addCarRequest.getNumberOfDoors();;
-        this.numberOfAirbags = addCarRequest.getNumberOfAirbags();
-        this.bodyType = addCarRequest.getBodyType();
-        this.acceleration100 = addCarRequest.getAcceleration100();
-        this.power = addCarRequest.getPower();
-        this.price = addCarRequest.getPrice();
-        this.nextTechnicalTest = addCarRequest.getNextTechnicalTest();
-        this.endOfInsurance = addCarRequest.getEndOfInsurance();
-        this.carStatus = addCarRequest.getCarStatus();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
 
     public String getBrand() {
         return brand;
@@ -159,7 +124,6 @@ public class Car extends UserDateAudit {
         this.bodyType = bodyType;
     }
 
-
     public Float getAcceleration100() {
         return acceleration100;
     }
@@ -200,4 +164,11 @@ public class Car extends UserDateAudit {
         this.endOfInsurance = endOfInsurance;
     }
 
+    public CarStatus getCarStatus() {
+        return carStatus;
+    }
+
+    public void setCarStatus(CarStatus carStatus) {
+        this.carStatus = carStatus;
+    }
 }

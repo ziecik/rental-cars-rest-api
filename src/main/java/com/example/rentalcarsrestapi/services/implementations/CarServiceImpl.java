@@ -1,5 +1,6 @@
 package com.example.rentalcarsrestapi.services.implementations;
 
+import com.example.rentalcarsrestapi.dto.AddCarRequest;
 import com.example.rentalcarsrestapi.model.Car;
 import com.example.rentalcarsrestapi.repositories.CarRepository;
 import com.example.rentalcarsrestapi.services.CarService;
@@ -17,6 +18,11 @@ public class CarServiceImpl implements CarService {
     @Override
     public List<Car> getAllCars() {
         return carRepository.findAll();
+    }
+
+    @Override
+    public Car add(AddCarRequest addCarRequest) {
+        return carRepository.save(new Car(addCarRequest));
     }
 
     @Override

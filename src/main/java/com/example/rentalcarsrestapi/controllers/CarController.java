@@ -1,5 +1,6 @@
 package com.example.rentalcarsrestapi.controllers;
 
+import com.example.rentalcarsrestapi.dto.AddCarRequest;
 import com.example.rentalcarsrestapi.model.Car;
 import com.example.rentalcarsrestapi.services.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class CarController {
     }
 
     @PostMapping
-    public Car addCar(@RequestBody Car car) {
-        return carService.add(car);
+    public Car addCar(@RequestBody AddCarRequest addCarRequest) {
+        return carService.add(addCarRequest);
     }
 }
