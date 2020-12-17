@@ -15,7 +15,7 @@ import java.util.function.Function;
 public class JwtUtil {
 
     private String secretKey = "testPass";
-    private long expirationTime = 1000 * 60 * 5;
+    private long expirationTime = 1000 * 60 * 25;
 
     public String generateToken(UserDetails userDetails) {
         //  place to add claims from userDetails to put them into token

@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -20,6 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
@@ -34,10 +36,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
-                .antMatchers("api/users/**").hasRole("ADMIN")
-                .antMatchers("api/admin").hasRole("ADMIN")
-                .antMatchers("api/user").hasRole("USER")
+//                .antMatchers("api/users/**").hasRole("ADMIN")
+//                .antMatchers("api/admin").hasRole("ADMIN")
+//                .antMatchers("api/user").hasRole("ADMIN")
                 .antMatchers("/api/authenticate").permitAll()
+//                .antMatchers("/api/dummySetup").permitAll()
+                .antMatchers("/api/register").permitAll()
+                .antMatchers("/api/confirm-account").permitAll()
                 .antMatchers("/swagger-ui**").permitAll()
                 .antMatchers("/api/swagger-ui**").permitAll()
                 .antMatchers("/v2/**").permitAll()

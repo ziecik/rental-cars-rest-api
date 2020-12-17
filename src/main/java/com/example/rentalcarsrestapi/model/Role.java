@@ -13,6 +13,8 @@ public class Role {
     @Enumerated(EnumType.STRING)
     @NaturalId
     private RoleName name;
+    @ManyToMany(mappedBy = "roles")
+    Set<User> users;
 
     public Long getId() {
         return id;
