@@ -9,4 +9,7 @@ public interface CarService {
     List<Car> getAllCars();
     Car add(AddCarRequest addCarRequest);
     Car add(Car car);
+
+    List<Car> findCarsByEngineSize(Float minSize, Float maxSize);
+    List<Car> findCarsByPrice(Float minPrice, Float maxPrice);
 }

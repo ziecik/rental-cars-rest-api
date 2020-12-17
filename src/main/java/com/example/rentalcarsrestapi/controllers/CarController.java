@@ -24,4 +24,14 @@ public class CarController {
     public Car addCar(@RequestBody AddCarRequest addCarRequest) {
         return carService.add(addCarRequest);
     }
+
+    @GetMapping("/engineSize")
+    public List<Car> findCarsByEngineSize(@RequestParam("minSize") Float minSize, @RequestParam("maxSize") Float maxSize) {
+        return carService.findCarsByEngineSize(minSize, maxSize);
+    }
+
+    @GetMapping
+    public List<Car> findCarsByPrice(@RequestParam("minPrice") Float minPrice, @RequestParam("maxPrice") Float maxPrice) {
+        return carService.findCarsByPrice(minPrice, maxPrice);
+    }
 }

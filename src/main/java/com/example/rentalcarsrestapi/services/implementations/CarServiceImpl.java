@@ -29,4 +29,14 @@ public class CarServiceImpl implements CarService {
     public Car add(Car car) {
         return carRepository.save(car);
     }
+
+    @Override
+    public List<Car> findCarsByEngineSize(Float minSize, Float maxSize) {
+        return carRepository.findByEngineSizeBetween(minSize, maxSize);
+    }
+
+    @Override
+    public List<Car> findCarsByPrice(Float minPrice, Float maxPrice) {
+        return carRepository.findByPriceBetween(minPrice, maxPrice);
+    }
 }

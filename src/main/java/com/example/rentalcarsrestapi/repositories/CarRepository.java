@@ -10,5 +10,6 @@ import java.util.*;
 @Repository
 public interface CarRepository extends JpaRepository<Car, Long> {
     List<Car> findByPriceBetween(Float price1, Float price2);
+    List<Car> findByEngineSizeBetween(Float sizeMin, Float sizeMax);
     List<Car> findByFuelType(FuelType fuelType);
 }
