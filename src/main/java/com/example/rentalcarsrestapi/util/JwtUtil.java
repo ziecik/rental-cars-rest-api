@@ -3,6 +3,7 @@ package com.example.rentalcarsrestapi.util;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -13,9 +14,10 @@ import java.util.function.Function;
 
 @Component
 public class JwtUtil {
-
-    private String secretKey = "testPass";
-    private long expirationTime = 1000 * 60 * 25;
+    @Value("${my.jwt.secret-key}")
+    private String secretKey;
+    @Value("${my.jwt.expiration-time}")
+    private long expirationTime;
 
     public String generateToken(UserDetails userDetails) {
         //  place to add claims from userDetails to put them into token
@@ -42,10 +44,11 @@ public class JwtUtil {
     }
 
     private Claims extractAllClaims(String token) {
-        return Jwts.parser()
-                .setSigningKey(secretKey)
-                .parseClaimsJws(token)
-                .getBody();
+            Claims claims = Jwts.parser()
+                    .setSigningKey(secretKey)
+                    .parseClaimsJws(token)
+                    .getBody();
+            return claims;
     }
 
     private String createToken(Map<String, Object> claims, String username) {
@@ -61,4 +64,5 @@ public class JwtUtil {
     private Boolean isTokenExpired(String token) {
         return extractExpirationToken(token).before(new Date());
     }
+
 }

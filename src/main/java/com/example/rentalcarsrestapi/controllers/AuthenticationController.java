@@ -1,18 +1,10 @@
 package com.example.rentalcarsrestapi.controllers;
 
 import com.example.rentalcarsrestapi.dto.AuthenticationRequest;
-import com.example.rentalcarsrestapi.model.Role;
-import com.example.rentalcarsrestapi.model.RoleName;
-import com.example.rentalcarsrestapi.model.User;
-import com.example.rentalcarsrestapi.repositories.RoleRepository;
-import com.example.rentalcarsrestapi.repositories.UserRepository;
 import com.example.rentalcarsrestapi.services.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/api")
