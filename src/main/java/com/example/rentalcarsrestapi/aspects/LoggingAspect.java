@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 @Component
 public class LoggingAspect {
 
-    private Logger logger = Logger.getLogger(LoggingAspect.class.getName());
+    private final Logger logger = Logger.getLogger(LoggingAspect.class.getName());
 
     @Pointcut("execution(* com.example.rentalcarsrestapi.controllers..*(..))")
     public void allMethods(){}

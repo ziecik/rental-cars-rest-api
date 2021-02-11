@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @RestControllerAdvice
-public class UserNotFoundAdvice extends ResponseEntityExceptionHandler {
+public class ResponseEntityAdvice extends ResponseEntityExceptionHandler {
 
     @ResponseBody
     @ExceptionHandler(UserNotFoundException.class)

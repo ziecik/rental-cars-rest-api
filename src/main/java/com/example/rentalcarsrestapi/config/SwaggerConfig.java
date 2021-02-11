@@ -13,11 +13,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfig {
 
     @Bean
-    public Docket getDocket() {
+    public Docket apiDocket() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .paths(PathSelectors.ant("/api/**"))
-                .apis(RequestHandlerSelectors.basePackage("com.example.rentalcarsrestapi"))
+                .paths(PathSelectors.any())
+                .apis(RequestHandlerSelectors.any())
                 .build();
     }
 }
